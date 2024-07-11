@@ -4,10 +4,9 @@ import LandingPage from "./LandingPage";
 
 function WellcomePage() {
   const [homePage, setHomePage] = useState(false);
-  const [login, setLogIn] = useState(false);
 
-  return homePage || login ? (
-    <LandingPage setLogin={setLogIn} />
+  return homePage ? (
+    <LandingPage />
   ) : (
     <div>
       <div className="landing-page-background"></div>

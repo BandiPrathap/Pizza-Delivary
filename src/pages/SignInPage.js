@@ -3,8 +3,7 @@ import SignUpPage from "./SignUpPage";
 import axios from "axios";
 import "./pages.css";
 
-const SignInPage = ({setLogIn}) => {
-
+const SignInPage = ({ setSignIn }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [signUp, setSignUp] = useState(false);
 
@@ -17,16 +16,16 @@ const SignInPage = ({setLogIn}) => {
       username: userName,
       password: password,
     };
-    
+
     try {
       const response = await axios.post("http://localhost:5001/login", user);
-      const {token} = response.data;
-      if(token){
-        localStorage.setItem('token',token);  
-        setLogIn(true);
-      }
-      else{
-        const {message} = response.data;
+      const { token } = response.data;
+      console.log(response.data);
+      if (token) {
+        localStorage.setItem("token", token);
+        setSignIn(false);
+      } else {
+        const { message } = response.data;
         alert(message);
       }
     } catch (error) {
@@ -42,7 +41,7 @@ const SignInPage = ({setLogIn}) => {
     <SignUpPage setSignUp={setSignUp} />
   ) : (
     <div className="container">
-      <h2>Pizza Delivery Sign In</h2>
+      <h2>Sign In</h2>
       <form id="signInForm" onSubmit={handleLogin}>
         <label htmlFor="email">Email</label>
         <input
@@ -74,7 +73,9 @@ const SignInPage = ({setLogIn}) => {
           <label htmlFor="showPassword">Show Password</label>
         </div>
 
-        <button type="submit">Sign In</button>
+        <button className="button" type="submit">
+          Sign In
+        </button>
       </form>
 
       <p className="note">

@@ -1,21 +1,19 @@
-import React , {useState , useEffect} from "react";
-import '../App.css'
+import React, { useState, useEffect } from "react";
+import "../App.css";
 
 function Navbar({ setSignIn }) {
+  const [isLogin, setIsLogin] = useState(false);
 
-  const [isLogin , setIsLogin] = useState(false);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
 
-  useEffect(()=>{
-    const token = localStorage.getItem('token');
+    token ? setIsLogin(true) : setIsLogin(false);
+  });
 
-    token?setIsLogin(true):setIsLogin(false);
-  })
-
-
-  const logOut =()=>{
+  const logOut = () => {
     setIsLogin(false);
-    localStorage.removeItem('token');
-  }
+    localStorage.removeItem("token");
+  };
 
   return (
     <>
@@ -35,19 +33,22 @@ function Navbar({ setSignIn }) {
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
             <a className="nav-link active">
-              Home <span class="sr-only">(current)</span>
+              Home <span className="sr-only">(current)</span>
             </a>
             <a className="nav-link">Dishes</a>
-            {
-            isLogin?(
-            <>
-              <a className="nav-link">Profile</a>
-              <a className="nav-link">my orders</a>
-              <a className="nav-link red" onClick={logOut}>Sign Out</a>
-            </>
-            )
-            :(<a className="nav-link" onClick={() => setSignIn(true)}>Sign In</a>)
-            }
+            {isLogin ? (
+              <>
+                <a className="nav-link">Profile</a>
+                <a className="nav-link">my orders</a>
+                <a className="nav-link red" onClick={logOut}>
+                  Sign Out
+                </a>
+              </>
+            ) : (
+              <a className="nav-link" onClick={() => setSignIn(true)}>
+                Sign In
+              </a>
+            )}
           </div>
         </div>
       </nav>
