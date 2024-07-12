@@ -20,7 +20,7 @@ const SignInPage = ({ setSignIn }) => {
     try {
       const response = await axios.post("http://localhost:5001/login", user);
       const { token } = response.data;
-      console.log(response.data);
+
       if (token) {
         localStorage.setItem("token", token);
         setSignIn(false);

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import LandingPage from "../pages/LandingPage";
+
 import "../App.css";
 
 function Navbar({ setSignIn, setCartItems }) {
   const [isLogin, setIsLogin] = useState(false);
+  const [home, setHome] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -16,12 +18,14 @@ function Navbar({ setSignIn, setCartItems }) {
     localStorage.removeItem("token");
   };
 
-  return (
+  return home ? (
+    <LandingPage />
+  ) : (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <a className="navbar-brand">Pothuraju</a>
         <button
-          className="navbar-toggler"
+          className="navbar-toggler ml-auto"
           type="button"
           data-toggle="collapse"
           data-target="#navbarNavAltMarkup"
@@ -33,7 +37,7 @@ function Navbar({ setSignIn, setCartItems }) {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
-            <a className="nav-link active">
+            <a className="nav-link active" onClick={() => setHome(true)}>
               Home <span className="sr-only">(current)</span>
             </a>
             {isLogin ? (
@@ -42,7 +46,7 @@ function Navbar({ setSignIn, setCartItems }) {
                 <a className="nav-link" onClick={() => setCartItems(true)}>
                   Cart
                 </a>
-                <a className="nav-link">my orders</a>
+                <a className="nav-link">MyOrders</a>
                 <a className="nav-link red" onClick={logOut}>
                   Sign Out
                 </a>

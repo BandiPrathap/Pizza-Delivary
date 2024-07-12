@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./items.css";
 
 function Cart() {
   const initialItems = JSON.parse(localStorage.getItem("cart")) || [];
@@ -15,7 +16,6 @@ function Cart() {
 
   return (
     <div className="cart">
-      <h2>Shopping Cart</h2>
       <div className="cart-items">
         {cartItems.length === 0 ? (
           <p>Your cart is empty.</p>

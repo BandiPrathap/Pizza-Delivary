@@ -73,17 +73,7 @@ p {
   margin-right: 10px;
   border-radius: 8px;
 }
-
-/* for SignUp Page */
-
-.note {
-  text-align: center;
-  color: black;
-}
-.note span {
-  color: red;
-}
-
+/* Default styles for all screen sizes */
 .container {
   width: 90%;
   padding: 20px;
@@ -113,13 +103,14 @@ label {
 input,
 textarea {
   margin-bottom: 15px;
-  padding: 5px;
+  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  font-size: 16px;
 }
 
 .button {
-  padding: 10px;
+  padding: 10px 20px;
   background-color: #28a745;
   color: white;
   border: none;
@@ -146,4 +137,48 @@ textarea {
 .show-password label {
   margin-left: 5px;
   color: #333;
+}
+
+.note {
+  text-align: center;
+  color: black;
+}
+
+.note span {
+  color: red;
+}
+
+/* Media queries for responsive design */
+
+/* Tablets and larger screens */
+@media (min-width: 768px) {
+  .container {
+    width: 70%;
+    padding: 30px;
+  }
+
+  input,
+  textarea {
+    font-size: 18px;
+  }
+
+  .button {
+    padding: 12px 24px;
+  }
+}
+
+/* Large screens (laptops/desktops) */
+@media (min-width: 1024px) {
+  .container {
+    width: 60%;
+  }
+
+  input,
+  textarea {
+    font-size: 20px;
+  }
+
+  .button {
+    padding: 14px 28px;
+  }
 }
