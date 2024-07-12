@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "../App.css";
 
-function Navbar({ setSignIn }) {
+function Navbar({ setSignIn, setCartItems }) {
   const [isLogin, setIsLogin] = useState(false);
 
   useEffect(() => {
@@ -35,10 +36,12 @@ function Navbar({ setSignIn }) {
             <a className="nav-link active">
               Home <span className="sr-only">(current)</span>
             </a>
-            <a className="nav-link">Dishes</a>
             {isLogin ? (
               <>
                 <a className="nav-link">Profile</a>
+                <a className="nav-link" onClick={() => setCartItems(true)}>
+                  Cart
+                </a>
                 <a className="nav-link">my orders</a>
                 <a className="nav-link red" onClick={logOut}>
                   Sign Out
