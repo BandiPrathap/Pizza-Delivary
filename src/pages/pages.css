@@ -3,6 +3,11 @@
   height: 250px;
   width: 100vw;
   background-size: cover;
+  background-position: center;
+}
+
+.big {
+  display: none;
 }
 
 .logo {
@@ -17,12 +22,11 @@ h1 {
 
 p {
   margin: 2px;
-  color: rgb(244, 206, 20);
+  color: rgb(126, 126, 125);
   font-style: italic;
   font-family: Serif;
 }
 .image {
-  text-align: center;
   margin-top: 20px;
 }
 
@@ -42,7 +46,7 @@ p {
 .image img {
   width: 200px;
   height: auto;
-  display: block;
+  display:block;
   margin: 0 auto;
   border-radius: 50%;
 }
@@ -65,6 +69,44 @@ p {
 .start button:hover {
   background-color: rgb(211, 184, 47);
 }
+
+@media (max-width: 768px) {
+  .landing-page-background {
+    height: 250px; 
+    background-position: top; 
+  }
+}
+
+@media (min-width: 1200px) { 
+  .landing-page-background{
+    height : 100vh;
+    background-size: contain;
+  }
+  .big{
+    display:block;
+  }
+  .small{
+    display: none;
+  }
+  .logo{
+    text-align:left;
+    margin-left:40px;
+    padding-top: 200px;
+  }
+  .logo h1{
+    margin-left: 100px;
+  }
+  .start{
+    text-align: left;
+    margin-left: 150px;
+  }
+  .big-image{
+    text-align: left;
+  }
+}
+
+
+
 .filter-buttons {
   margin: 10px;
 }
