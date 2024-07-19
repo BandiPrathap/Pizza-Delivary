@@ -1,9 +1,18 @@
 import React, { useState, useEffect } from "react";
 import "./items.css";
-import SignInPage from "../pages/SignInPage";
+
 
 function DisplayItems({ items }) {
-  const [cart, setCart] = useState([]);
+
+  const [cart, setCart] = useState(() => {
+    const savedCart = localStorage.getItem("cart");
+    try {
+      return savedCart ? JSON.parse(savedCart) : [];
+    } catch (e) {
+      console.error("Error parsing cart data from localStorage", e);
+      return [];
+    }
+  });
 
   const addCart = (item) => {
     setCart([...cart, item]);

@@ -91,10 +91,14 @@ p {
   .logo{
     text-align:left;
     margin-left:40px;
-    padding-top: 200px;
+    padding-top: 180px;
   }
   .logo h1{
     margin-left: 100px;
+    font-size:35px;
+  }
+  .logo p{
+    font-size:20px;
   }
   .start{
     text-align: left;
@@ -190,9 +194,7 @@ textarea {
   color: red;
 }
 
-/* Media queries for responsive design */
 
-/* Tablets and larger screens */
 @media (min-width: 768px) {
   .container {
     width: 70%;
@@ -209,7 +211,6 @@ textarea {
   }
 }
 
-/* Large screens (laptops/desktops) */
 @media (min-width: 1024px) {
   .container {
     width: 60%;
