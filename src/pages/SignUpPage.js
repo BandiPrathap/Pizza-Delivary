@@ -23,7 +23,7 @@ const SignUpPage = ({ setSignUp }) => {
     };
 
     try {
-      const response = await axios.post("http://localhost:5001/register", user);
+      const response = await axios.post("https://pothuraju.vercel.app/auth/register", user);
       const { message } = response.data;
       alert(message);
     } catch (error) {

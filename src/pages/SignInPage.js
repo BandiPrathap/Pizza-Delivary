@@ -18,7 +18,7 @@ const SignInPage = ({ setSignIn }) => {
     };
 
     try {
-      const response = await axios.post("http://localhost:5001/login", user);
+      const response = await axios.post("https://pothuraju.vercel.app/auth/login", user);
       const { token } = response.data;
 
       if (token) {
