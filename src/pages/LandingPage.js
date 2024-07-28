@@ -16,7 +16,7 @@ function LandingPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("http://localhost:5001/items");
+        const res = await axios.get("https://pothuraju.vercel.app/pizza");
         setItems(res.data);
         setFiltered(res.data);
       } catch (error) {
