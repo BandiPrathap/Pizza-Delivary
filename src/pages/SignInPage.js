@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import SignUpPage from "./SignUpPage";
 import axios from "axios";
+import OtpVerify from "../component/OtpVerify";
 import "./pages.css";
 
 const SignInPage = ({ setSignIn }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [signUp, setSignUp] = useState(false);
+  const [otpVerify , setOtpVerify] = useState(false)
 
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -38,8 +40,8 @@ const SignInPage = ({ setSignIn }) => {
   };
 
   return signUp ? (
-    <SignUpPage setSignUp={setSignUp} />
-  ) : (
+    <SignUpPage setSignUp={setSignUp} setOtpVerify={setOtpVerify}/>
+  ) : otpVerify ? <OtpVerify setSignUp={setSignUp} setOtpVerify={setOtpVerify} /> : (
     <div className="container">
       <h2>Sign In</h2>
       <form id="signInForm" onSubmit={handleLogin}>

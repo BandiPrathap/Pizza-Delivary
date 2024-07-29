@@ -3,7 +3,7 @@ import axios from "axios";
 
 import "./pages.css";
 
-const SignUpPage = ({ setSignUp }) => {
+const SignUpPage = ({ setSignUp , setOtpVerify }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const [username, setUsername] = useState("");
@@ -26,6 +26,10 @@ const SignUpPage = ({ setSignUp }) => {
       const response = await axios.post("https://pothuraju.vercel.app/auth/register", user);
       const { message } = response.data;
       alert(message);
+      setSignUp(false);
+      if(message!=="The email address already exists"){
+        setOtpVerify(true);
+      }
     } catch (error) {
       console.log(error);
     }
