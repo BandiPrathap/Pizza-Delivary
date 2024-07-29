@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./items.css";
 
-
 function DisplayItems({ items }) {
-
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem("cart");
     try {
@@ -15,7 +13,11 @@ function DisplayItems({ items }) {
   });
 
   const addCart = (item) => {
-    setCart([...cart, item]);
+    setCart((prevCart) => {
+      const updatedCart = [...prevCart, item];
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      return updatedCart;
+    });
   };
 
   useEffect(() => {
@@ -25,8 +27,8 @@ function DisplayItems({ items }) {
   return (
     <div className="items-container">
       {items.map((item) => (
-        <>
-          <div key={`items${item.id}`} className="item-container">
+        <div key={item.id} className="item-wrapper">
+          <div className="item-container">
             <div className="item">
               <img src={item.imgurl} alt={item.title} />
               <button className="add-cart" onClick={() => addCart(item)}>
@@ -35,12 +37,12 @@ function DisplayItems({ items }) {
             </div>
             <div className="item-content">
               <h1>{item.title}</h1>
-              <p>Price : {item.price}</p>
+              <p>Price: {item.price}</p>
               <p>{item.description}</p>
             </div>
           </div>
-          <hr className="hr-line" key={`line${item.id}`} />
-        </>
+          <hr className="hr-line" />
+        </div>
       ))}
     </div>
   );

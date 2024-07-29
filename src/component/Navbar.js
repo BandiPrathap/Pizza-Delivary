@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
+import {Link} from 'react-router-dom';
 
 import "../App.css";
 
-function Navbar({ setSignIn, setShowCart }) {
+function Navbar() {
   const [isLogin, setIsLogin] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
 
     token ? setIsLogin(true) : setIsLogin(false);
-  });
+  },[]);
 
   const logOut = () => {
     setIsLogin(false);
@@ -19,7 +20,7 @@ function Navbar({ setSignIn, setShowCart }) {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-warning">
-        <a className="navbar-brand text-danger font-weight-bold">Pothuraju</a>
+        <Link className="navbar-brand text-danger font-weight-bold">Pothuraju</Link>
         <button
           className="navbar-toggler bg-warning"
           type="button"
@@ -33,24 +34,24 @@ function Navbar({ setSignIn, setShowCart }) {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav m-auto">
-            <a className="nav-link active text-light font-weight-bold" onClick={() => setShowCart(false)}>
+            <Link className="nav-link active text-light font-weight-bold" to='/home'>
               Home <span className="sr-only">(current)</span>
-            </a>
+            </Link>
             {isLogin ? (
               <>
-                <a className="nav-link text-light font-weight-bold">Profile</a>
-                <a className="nav-link text-light font-weight-bold" onClick={() => setShowCart(true)}>
+                <Link className="nav-link text-light font-weight-bold">Profile</Link>
+                <Link to='/cart' className="nav-link text-light font-weight-bold">
                   Cart
-                </a>
-                <a className="nav-link text-light font-weight-bold">MyOrders</a>
-                <a className="nav-link text-danger font-weight-bold" onClick={logOut}>
+                </Link>
+                <Link className="nav-link text-light font-weight-bold">MyOrders</Link>
+                <Link className="nav-link text-danger font-weight-bold" onClick={logOut}>
                   Sign Out
-                </a>
+                </Link>
               </>
             ) : (
-              <a className="nav-link text-light font-weight-bold" onClick={() => setSignIn(true)}>
+              <Link to='/auth/login' className="nav-link text-light font-weight-bold">
                 Sign In
-              </a>
+              </Link>
             )}
           </div>
         </div>

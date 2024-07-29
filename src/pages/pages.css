@@ -56,7 +56,7 @@ p {
   margin-top: 20px;
 }
 
-.start button {
+/*.start button {
   padding: 10px 20px;
   background-color: rgb(244, 206, 20);
   color: white;
@@ -68,7 +68,7 @@ p {
 
 .start button:hover {
   background-color: rgb(211, 184, 47);
-}
+}*/
 
 @media (max-width: 768px) {
   .landing-page-background {

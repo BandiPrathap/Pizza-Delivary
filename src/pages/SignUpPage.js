@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { Link ,useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import "./pages.css";
 
-const SignUpPage = ({ setSignUp , setOtpVerify }) => {
+const SignUpPage = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const [username, setUsername] = useState("");
@@ -11,6 +12,8 @@ const SignUpPage = ({ setSignUp , setOtpVerify }) => {
   const [password, setPassword] = useState("");
   const [mobileNo, setMobileNo] = useState("");
   const [address, setAddress] = useState("");
+
+  const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -26,9 +29,8 @@ const SignUpPage = ({ setSignUp , setOtpVerify }) => {
       const response = await axios.post("https://pothuraju.vercel.app/auth/register", user);
       const { message } = response.data;
       alert(message);
-      setSignUp(false);
       if(message!=="The email address already exists"){
-        setOtpVerify(true);
+        navigate('/verify-otp',{state:{email}});
       }
     } catch (error) {
       console.log(error);
@@ -44,7 +46,7 @@ const SignUpPage = ({ setSignUp , setOtpVerify }) => {
       <h2>Registration</h2>
       <p className="note">
         Already have an account?
-        <span onClick={() => setSignUp(false)}> Sign In</span>
+        <span><Link to='/auth/login'>Sign In</Link></span>
       </p>
       <form id="registrationForm" onSubmit={handleRegister}>
         <label htmlFor="username">Username</label>

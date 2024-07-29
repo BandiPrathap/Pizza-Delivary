@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from "react";
-import SignInPage from "./SignInPage";
 import Navbar from "../component/Navbar";
 import DisplayItems from "../component/DisplayItems";
-import Cart from "../component/Cart";
 import axios from "axios";
 import "./pages.css";
 
 function LandingPage() {
   const initialItems = JSON.parse(localStorage.getItem("cart")) || [];
-  const [signIn, setSignIn] = useState(false);
   const [items, setItems] = useState(initialItems);
   const [filtered, setFiltered] = useState([]);
-  const [showCart, setShowCart] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,14 +34,9 @@ function LandingPage() {
     setFiltered(items.filter((item) => !item.isVegetarian));
   };
 
-  return signIn ? (
-    <SignInPage setSignIn={setSignIn} />
-  ) : (
+  return (
     <div>
-      <Navbar setSignIn={setSignIn} setShowCart={setShowCart} />
-      {showCart ? (
-        <Cart />
-      ) : (
+      <Navbar/>
         <>
           <div className="filter-buttons ml-lg-5 mt-5 pl-lg-5">
             <button onClick={displayAll}>All</button>
@@ -54,7 +45,6 @@ function LandingPage() {
           </div>
           <DisplayItems items={filtered} />
         </>
-      )}
     </div>
   );
 }

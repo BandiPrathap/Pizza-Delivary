@@ -58,6 +58,7 @@
   border: 1px solid rgb(240, 240, 235);
   width: 70vw;
   margin-left: 10%;
+  margin-top:40px;
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {

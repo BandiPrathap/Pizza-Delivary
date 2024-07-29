@@ -1,16 +1,15 @@
 import React, { useState } from "react";
-import SignUpPage from "./SignUpPage";
+import { Link , useNavigate } from "react-router-dom";
 import axios from "axios";
-import OtpVerify from "../component/OtpVerify";
 import "./pages.css";
 
-const SignInPage = ({ setSignIn }) => {
+const SignInPage = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [signUp, setSignUp] = useState(false);
-  const [otpVerify , setOtpVerify] = useState(false)
 
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -25,7 +24,7 @@ const SignInPage = ({ setSignIn }) => {
 
       if (token) {
         localStorage.setItem("token", token);
-        setSignIn(false);
+        navigate('/home');
       } else {
         const { message } = response.data;
         alert(message);
@@ -39,9 +38,7 @@ const SignInPage = ({ setSignIn }) => {
     setShowPassword(!showPassword);
   };
 
-  return signUp ? (
-    <SignUpPage setSignUp={setSignUp} setOtpVerify={setOtpVerify}/>
-  ) : otpVerify ? <OtpVerify setSignUp={setSignUp} setOtpVerify={setOtpVerify} /> : (
+  return (
     <div className="container">
       <h2>Sign In</h2>
       <form id="signInForm" onSubmit={handleLogin}>
@@ -82,7 +79,7 @@ const SignInPage = ({ setSignIn }) => {
 
       <p className="note">
         Don't have an account?
-        <span onClick={() => setSignUp(true)}> Sign Up</span>
+        <span><Link to='/auth/register'>Sign Up</Link></span>
       </p>
     </div>
   );
