@@ -6,6 +6,7 @@ import SignUpPage from "./pages/SignUpPage";
 import SignInPage from "./pages/SignInPage";
 import OtpVerify from "./component/OtpVerify";
 import Cart from "./component/Cart";
+import Search from "./component/Search";
 import "./App.css";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/auth/login" element={<SignInPage />}/>
         <Route path="/verify-otp" element={<OtpVerify />}/>
         <Route path='/cart' element={<Cart />}/>
+        <Route path='/search' element={<Search/>}/>
       </Routes>
     </Router>
   );
