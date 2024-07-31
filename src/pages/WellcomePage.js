@@ -13,7 +13,7 @@ function WellcomePage() {
 
         <div className="start big">
           <button className="btn btn-warning">
-            <Link className="text-light text-decoration-none" to='/home'>Get Started</Link>
+            <Link className="text-light text-decoration-none" to='/auth/login'>Get Started</Link>
           </button>
         </div>
       </div>
@@ -33,7 +33,7 @@ function WellcomePage() {
 
       <div className="start small">
         <button className="btn btn-warning">
-          <Link className="text-light text-decoration-none" to='/home'>Get Started</Link>
+          <Link className="text-light text-decoration-none" to='/auth/login'>Get Started</Link>
         </button>
       </div>
     </div>
