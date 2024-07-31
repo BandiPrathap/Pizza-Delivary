@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Link , useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./pages.css";
 
 const SignInPage = () => {
   const [showPassword, setShowPassword] = useState(false);
-
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
@@ -20,17 +21,19 @@ const SignInPage = () => {
 
     try {
       const response = await axios.post("https://pothuraju.vercel.app/auth/login", user);
-      const { token } = response.data;
+      const { token, message } = response.data;
 
       if (token) {
         localStorage.setItem("token", token);
-        navigate('/home');
+        toast.success("Login Successful!");
+        setTimeout(() => {
+          navigate('/home');
+        }, 2000);
       } else {
-        const { message } = response.data;
-        alert(message);
+        toast.error(message);
       }
     } catch (error) {
-      console.error("There was an error logging in!", error);
+      toast.error("Login failed! Please check your credentials and try again.");
     }
   };
 
@@ -39,7 +42,8 @@ const SignInPage = () => {
   };
 
   return (
-    <div className="container">
+    <div className="sign-in">
+      <div className="container">
       <h2>Sign In</h2>
       <form id="signInForm" onSubmit={handleLogin}>
         <label htmlFor="email">Email</label>
@@ -72,7 +76,7 @@ const SignInPage = () => {
           <label htmlFor="showPassword">Show Password</label>
         </div>
 
-        <button className="button" type="submit">
+        <button className="btn btn-warning" type="submit">
           Sign In
         </button>
       </form>
@@ -81,7 +85,12 @@ const SignInPage = () => {
         Don't have an account?
         <span><Link to='/auth/register'>Sign Up</Link></span>
       </p>
+
+      <ToastContainer />
     </div>
+    </div>
+    
+    
   );
 };
 

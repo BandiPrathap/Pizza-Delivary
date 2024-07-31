@@ -56,19 +56,6 @@ p {
   margin-top: 20px;
 }
 
-/*.start button {
-  padding: 10px 20px;
-  background-color: rgb(244, 206, 20);
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 15px;
-  transition: background-color 0.3s ease;
-}
-
-.start button:hover {
-  background-color: rgb(211, 184, 47);
-}*/
 
 @media (max-width: 768px) {
   .landing-page-background {
@@ -196,6 +183,13 @@ textarea {
 
 
 @media (min-width: 768px) {
+  .sign-in{
+    height: 100vh;
+    width:100vw;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+  }
   .container {
     width: 70%;
     padding: 30px;
@@ -212,8 +206,16 @@ textarea {
 }
 
 @media (min-width: 1024px) {
+  .sign-in{
+    height: 100vh;
+    width:100vw;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+  }
+  
   .container {
-    width: 60%;
+    width: 40%;
   }
 
   input,
