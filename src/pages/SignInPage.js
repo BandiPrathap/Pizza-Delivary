@@ -65,25 +65,29 @@ const SignInPage = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-
-        <div className="show-password">
-          <input
-            type="checkbox"
-            id="showPassword"
-            checked={showPassword}
-            onChange={handleShowPasswordChange}
-          />
-          <label htmlFor="showPassword">Show Password</label>
+        <div className="d-flex flex-row justify-content-between">
+          <div className="show-password">
+            <input
+              type="checkbox"
+              id="showPassword"
+              checked={showPassword}
+              onChange={handleShowPasswordChange}
+              className="mt-3"
+            />
+            <label htmlFor="showPassword" className="mt-1">Show Password</label>
+          </div>
+          
         </div>
+        
 
-        <button className="btn btn-warning" type="submit">
+        <button className="btn btn-warning text-light" type="submit">
           Sign In
         </button>
       </form>
 
       <p className="note">
         Don't have an account?
-        <span><Link to='/auth/register'>Sign Up</Link></span>
+        <span><Link to='/auth/register' className="text-danger"> Sign Up</Link></span>
       </p>
 
       <ToastContainer />

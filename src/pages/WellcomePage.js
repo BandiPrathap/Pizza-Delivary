@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import "./pages.css";
 
 function WellcomePage() {
+  const token=localStorage.getItem("token");
   return (
     <div>
       <div className="landing-page-background">
@@ -13,7 +14,7 @@ function WellcomePage() {
 
         <div className="start big">
           <button className="btn btn-warning">
-            <Link className="text-light text-decoration-none" to='/auth/login'>Get Started</Link>
+            <Link className="text-light text-decoration-none" to={token?'/home':'/auth/login'}>Get Started</Link>
           </button>
         </div>
       </div>
@@ -33,7 +34,7 @@ function WellcomePage() {
 
       <div className="start small">
         <button className="btn btn-warning">
-          <Link className="text-light text-decoration-none" to='/auth/login'>Get Started</Link>
+          <Link className="text-light text-decoration-none" to={token?'/home':'/auth/login'}>Get Started</Link>
         </button>
       </div>
     </div>
