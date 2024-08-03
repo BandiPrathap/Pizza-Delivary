@@ -26,7 +26,7 @@ function DisplayItems({ items }) {
 
   return (
     <div className="items-container">
-      {items.map((item) => (
+      {items ? (items.map((item) => (
         <>
           <div key={item.id} className="item-container">
             <div className="item">
@@ -43,7 +43,7 @@ function DisplayItems({ items }) {
           </div>
           <hr className="hr-line" key={`line${item.id}`} />
         </>
-      ))}
+      ))):<p>Loading...</p>}
     </div>
   );
 }

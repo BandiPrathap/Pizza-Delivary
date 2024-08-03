@@ -10,6 +10,7 @@ function LandingPage() {
   const [items, setItems] = useState(initialItems);
   const [filtered, setFiltered] = useState([]);
 
+
   useEffect(() => {
     const fetchData = async () => {
       try {

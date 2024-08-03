@@ -39,7 +39,7 @@ function Navbar() {
             </Link>
             {isLogin ? (
               <>
-                <Link className="nav-link text-light font-weight-bold">Profile</Link>
+                <Link className="nav-link text-light font-weight-bold" to='/profile'>Profile</Link>
                 <Link to='/cart' className="nav-link text-light font-weight-bold">
                   Cart
                 </Link>
