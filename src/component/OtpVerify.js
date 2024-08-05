@@ -43,10 +43,11 @@ const OtpVerify = () => {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container w-10 mt-5">
       <h3 className="mb-4">Email Verification</h3>
+      <p>We have send a 6-digits One Time Password(OTP) </p>
       <p className="mb-4">Your email: <strong>{email}</strong></p>
-      <div className="d-flex justify-content-center mb-4">
+      <div className="d-flex mb-4">
         {otp.map((digit, index) => (
           <input
             key={index}
@@ -57,7 +58,7 @@ const OtpVerify = () => {
             ref={(el) => (inputs.current[index] = el)}
             maxLength={1}
             className="form-control text-center mx-1"
-            style={{ width: '3rem', height: '3rem', fontSize: '1.5rem' }}
+            style={{ width: '2.5rem', height: '2.5rem', fontSize: '1.2rem' }}
           />
         ))}
       </div>

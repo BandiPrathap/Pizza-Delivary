@@ -14,7 +14,10 @@ function LandingPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("https://pothuraju.vercel.app/pizza");
+        const token = localStorage.getItem('token');
+        const res = await axios.get("https://pothuraju.vercel.app/items",{headers:{
+          'Authorization':token
+        }});
         localStorage.setItem('items',JSON.stringify(res.data));
         setItems(res.data);
         setFiltered(res.data);
@@ -41,10 +44,10 @@ function LandingPage() {
     <div>
       <Navbar/>
         <>
-          <div>
+          <div className="mt-2 mb-0">
             <Search setFiltered={setFiltered} items={items}/>
           </div>
-          <div className="filter-buttons ml-lg-5 mt-3 pl-lg-5">
+          <div className="filter-buttons mt-0">
             <button onClick={displayAll}>All</button>
             <button onClick={displayVeg}>Veg</button>
             <button onClick={displayNonVeg}>Non Veg</button>

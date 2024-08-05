@@ -26,6 +26,7 @@ function DisplayItems({ items }) {
 
   return (
     <div className="items-container">
+      <span className="ml-2 text-secondary">{items.length} Items Found</span>
       {items ? (items.map((item) => (
         <>
           <div key={item.id} className="item-container">

@@ -3,7 +3,8 @@ import Navbar from '../component/Navbar';
 import axios from 'axios';
 
 const Profile = () => {
-  const [userData, setUserData] = useState(null);
+  const user =localStorage.getItem('user')||[];
+  const [userData, setUserData] = useState(user);
   const [error, setError] = useState(null);
 
   const token = localStorage.getItem('token');
@@ -15,6 +16,7 @@ const Profile = () => {
             'Authorization': `${token}`,
           },
         });
+        localStorage.setItem('user',JSON.stringify(response.data));
         setUserData(response.data);
       } catch (err) {
         console.error('Error fetching user data:', err.response ? err.response.data : err.message);
@@ -29,6 +31,8 @@ const Profile = () => {
     }
   }, [token]);
 
+ 
+
   return (
     <div>
         <Navbar />
@@ -38,7 +42,7 @@ const Profile = () => {
         <div>
           <p><strong>Name:</strong> {userData.name}</p>
           <p><strong>Email:</strong> {userData.email}</p>
-          <p><strong>Mobile No:</strong> {userData.mobileNo}</p>
+          <p><strong>Mobile No:</strong> {userData.modileNo}</p>
           <p><strong>Address:</strong> {userData.address}</p>
         </div>
       ) : (

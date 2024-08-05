@@ -44,9 +44,9 @@ const SignUpPage = () => {
   return (
     <div className="container">
       <h2>Registration</h2>
-      <p className="note">
+      <p className="note text-secondary">
         Already have an account?
-        <span><Link to='/auth/login'>Sign In</Link></span>
+        <span><Link to='/auth/login' className="text-danger"> Sign In</Link></span>
       </p>
       <form id="registrationForm" onSubmit={handleRegister}>
         <label htmlFor="username">Username</label>
@@ -85,8 +85,9 @@ const SignUpPage = () => {
             id="showPassword"
             checked={showPassword}
             onChange={handleShowPasswordChange}
+            className="mt-3"
           />
-          <label htmlFor="showPassword">Show Password</label>
+          <label htmlFor="showPassword" className="mt-1">Show Password</label>
         </div>
 
         <label htmlFor="confirmPassword">Confirm Password</label>
@@ -117,7 +118,7 @@ const SignUpPage = () => {
           required
         ></textarea>
 
-        <button className="button" type="submit">
+        <button className="btn btn-warning text-light" type="submit">
           Register
         </button>
       </form>

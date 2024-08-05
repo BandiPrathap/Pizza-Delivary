@@ -15,6 +15,7 @@ function Navbar() {
   const logOut = () => {
     setIsLogin(false);
     localStorage.removeItem("token");
+    localStorage.removeItem('user');
   };
 
   return (
