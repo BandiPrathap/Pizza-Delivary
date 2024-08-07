@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
 
 const OtpVerify = () => {
@@ -33,12 +34,16 @@ const OtpVerify = () => {
     try {
       const res = await axios.post("https://pothuraju.vercel.app/auth/verify-otp", { email, otp: Otp });
       const { message } = res.data;
-      alert(message);
-      if (message !== "Invalid or expired OTP") {
-        navigate('/auth/login');
-      }
+      toast.success(message);
+
+      setTimeout(() => {
+        if (message !== "Invalid or expired OTP") {
+          navigate('/auth/login');
+        }
+      }, 2000);
+      
     } catch (error) {
-      console.error("Error verifying OTP:", error);
+      toast.error("Your enter wrong OTP. Try again");
     }
   };
 
@@ -63,6 +68,7 @@ const OtpVerify = () => {
         ))}
       </div>
       <button className="btn btn-warning" onClick={verifyOtp}>Verify</button>
+      <ToastContainer/>
     </div>
   );
 };

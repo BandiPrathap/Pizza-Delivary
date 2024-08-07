@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link ,useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 
 import "./pages.css";
@@ -28,12 +29,18 @@ const SignUpPage = () => {
     try {
       const response = await axios.post("https://pothuraju.vercel.app/auth/register", user);
       const { message } = response.data;
-      alert(message);
-      if(message!=="The email address already exists"){
-        navigate('/verify-otp',{state:{email}});
-      }
+      toast.success(message);
+
+      setTimeout(() => {
+        if (message!=="The email address already exists"){
+          navigate('/verify-otp',{state:{email}});
+        }
+        
+      }, 2000);
+
+
     } catch (error) {
-      console.log(error);
+      toast.warning("The email is already exists");
     }
   };
 
@@ -122,6 +129,7 @@ const SignUpPage = () => {
           Register
         </button>
       </form>
+      <ToastContainer/>
     </div>
   );
 };

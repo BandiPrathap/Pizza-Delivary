@@ -52,7 +52,9 @@ function LandingPage() {
             <button onClick={displayVeg}>Veg</button>
             <button onClick={displayNonVeg}>Non Veg</button>
           </div>
-          <DisplayItems items={filtered} />
+          <div className="d-flex justify-content-center align-items-center">
+            <DisplayItems items={filtered} />
+          </div>
         </>
     </div>
   );
