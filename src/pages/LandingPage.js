@@ -44,8 +44,9 @@ function LandingPage() {
     <div>
       <Navbar/>
         <>
-          <div className="mt-2 mb-0">
-            <Search setFiltered={setFiltered} items={items}/>
+          <div className="mt-5 mb-0">
+            <h5 className="ml-3 mb-0">What do you want to eat today?</h5>
+            <Search setFiltered={setFiltered} items={items} className='mt-0'/>
           </div>
           <div className="filter-buttons mt-0">
             <button onClick={displayAll}>All</button>

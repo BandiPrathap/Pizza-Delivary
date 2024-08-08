@@ -103,8 +103,15 @@ p {
 }
 
 .filter-buttons button {
+  color:rgb(2, 2, 54);
+  background-color: white;
+  border:2px solid rgb(131, 131, 131);
   margin-right: 10px;
   border-radius: 8px;
+}
+
+.filter-buttons button:hover{
+  color:white;
 }
 /* Default styles for all screen sizes */
 .container {
