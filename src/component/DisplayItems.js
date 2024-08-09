@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import ItemSkeleton from "../utils/ItemSkeleton";
 import "./items.css";
 
 function DisplayItems({ items }) {
@@ -29,24 +30,32 @@ function DisplayItems({ items }) {
       <div className="w-100">
         <p className="ml-3 text-secondary">{items.length} Items Found</p>
       </div>
-      {items ? (items.map((item) => (
+      {items.length === 0 ? (
         <>
-          <div key={item.id} className="item-container">
-            <div className="item">
-              <img src={item.imgurl} alt={item.title} />
-              <button className="add-cart" onClick={() => addCart(item)}>
-                Add
-              </button>
-            </div>
-            <div className="item-content">
-              <h1>{item.title}</h1>
-              <p>Price : {item.price}</p>
-              <p>{item.description}</p>
-            </div>
-          </div>
-          <hr className="hr-line" key={`line${item.id}`} />
+          <ItemSkeleton />
+          <ItemSkeleton />
+          <ItemSkeleton />
         </>
-      ))):<p>Loading...</p>}
+      ) : (
+        items.map((item) => (
+          <React.Fragment key={item.id}>
+            <div className="item-container">
+              <div className="item">
+                <img src={item.imgurl} alt={item.title} />
+                <button className="add-cart" onClick={() => addCart(item)}>
+                  Add
+                </button>
+              </div>
+              <div className="item-content">
+                <h1>{item.title}</h1>
+                <p>Price: {item.price}</p>
+                <p>{item.description}</p>
+              </div>
+            </div>
+            <hr className="hr-line" />
+          </React.Fragment>
+        ))
+      )}
     </div>
   );
 }
