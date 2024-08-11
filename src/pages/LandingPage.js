@@ -28,6 +28,26 @@ function LandingPage() {
     fetchData();
   }, []);
 
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get('https://pothuraju.vercel.app/user', {
+          headers: {
+            'Authorization': `${token}`,
+          },
+        });
+        localStorage.setItem('user',JSON.stringify(response.data));
+      } catch (err) {
+        console.error('Error fetching user data:', err.response ? err.response.data : err.message);
+      }
+    }
+    if (token) {
+      fetchUserData();
+    }
+  },[]);
+
   const displayAll = () => {
     setFiltered(items);
   };

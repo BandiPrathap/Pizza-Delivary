@@ -14,11 +14,40 @@ function DisplayItems({ items }) {
   });
 
   const addCart = (item) => {
-    setCart((prevCart) => {
-      const updatedCart = [...prevCart, item];
-      localStorage.setItem("cart", JSON.stringify(updatedCart));
-      return updatedCart;
-    });
+    const user = localStorage.getItem('user');
+    if (user) {
+      const userData = JSON.parse(user);
+
+      setCart((prevCart) => {
+        
+        const existingItemIndex = prevCart.findIndex(cartItem => cartItem.items_id === item.id && cartItem.user_id === userData.id);
+
+        let updatedCart;
+        if (existingItemIndex !== -1) {
+          
+          updatedCart = [...prevCart];
+          updatedCart[existingItemIndex] = {
+            ...updatedCart[existingItemIndex],
+            quantity: updatedCart[existingItemIndex].quantity + 1
+          };
+        } else {
+          
+          updatedCart = [
+            ...prevCart,
+            {
+              user_id: userData.id,
+              items_id: item.id,
+              quantity: 1
+            }
+          ];
+        }
+
+        localStorage.setItem("cart", JSON.stringify(updatedCart));
+        return updatedCart;
+      });
+    } else {
+      alert('Please sign in to your account');
+    }
   };
 
   useEffect(() => {

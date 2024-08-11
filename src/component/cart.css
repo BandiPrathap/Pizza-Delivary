@@ -1,0 +1,32 @@
+.cart-container{
+    background-color:rgb(249, 249, 249);
+    height: 100vh;  
+}
+
+.sitem-container{
+    background-color:white;
+    margin:0 15px;
+    box-shadow:1px 1px 10px 5px rgb(227, 226, 226);
+    border-radius: 8px;
+    padding:10px;
+}
+
+.cart-item-img{
+    width:150px;
+    border-radius: 10px;
+    height:120px;
+
+}
+ .quantity-container button{
+    background-color:greenyellow;
+    color:black;
+    font-size:20px;
+    height:35px;
+    width:35px;
+    border-radius:50%;
+    border-color:greenyellow;
+ }
+
+ .quantity-container button:hover{
+    box-shadow: 1px 1px 10px 5px rgb(212, 249, 132);
+ }

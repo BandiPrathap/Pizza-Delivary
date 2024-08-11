@@ -44,7 +44,7 @@ function Navbar() {
                 <Link to='/cart' className="nav-link text-light font-weight-bold">
                   Cart
                 </Link>
-                <Link className="nav-link text-light font-weight-bold">MyOrders</Link>
+                <Link to='/myorders'className="nav-link text-light font-weight-bold">MyOrders</Link>
                 <Link className="nav-link text-danger font-weight-bold" onClick={logOut}>
                   Sign Out
                 </Link>
